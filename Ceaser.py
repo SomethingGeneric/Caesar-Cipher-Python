@@ -3,9 +3,12 @@ def Encryption(plaintext, key_val):
     ciphertext = ''
     for i in range(len(plaintext)):
         special = plaintext[i]
-        if special.isalpha():
-            new_special = special.lower()
+        new_special = special.lower()
+        if new_special == " ":
+            ciphertext += ' '
+        elif special.isalpha():
             ciphertext += chr((ord(new_special) + key_val - 97) % 26 + 97)
+
     return ciphertext
 
 
@@ -13,14 +16,17 @@ def Decryption(ciphertext, key_val):
     plaintext = ''
     for i in range(len(ciphertext)):
         special = ciphertext[i]
-        if special.isalpha():
-            new_special = special.lower()
+        new_special = special.lower()
+        if new_special == " ":
+            plaintext += ' '
+        elif special.isalpha():
             plaintext += chr((ord(new_special) - key_val - 97) % 26 + 97)
     return plaintext
 
 
 while True:
-    print('Welcome to my Word..\n [*] Press 1 for Encryption \n [*] Press 0 for Decryption \n [*] Press 01 to exit.. ')
+    print(
+        'Welcome to my Word..\n [*] Press 1 for Encryption \n [*] Press 0 for Decryption \n [*] Press 01 to exit.. ')
     print('Tip ---> Encryption/Decryption with shift value of your choice ! ')
     choice = input('Insert Here : ')
     if choice.isdigit():
