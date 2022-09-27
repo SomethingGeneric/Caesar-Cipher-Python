@@ -26,7 +26,7 @@ def Decryption(ciphertext, key_val):
 def BruteDecrypt(ciphertext):
     for i in range(1,10000):
         text = Decryption(ciphertext,i)
-        print(text)
+        print(f"{text} with a shift of {str(i)}")
         if input("Is it readable? (y/N): ") == "y":
             break
 
