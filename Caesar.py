@@ -23,10 +23,16 @@ def Decryption(ciphertext, key_val):
             plaintext += chr((ord(new_special) - key_val - 97) % 26 + 97)
     return plaintext
 
+def BruteDecrypt(ciphertext):
+    for i in range(1,10000):
+        text = Decryption(ciphertext,i)
+        print(text)
+        if input("Is it readable? (y/N): ") == "y":
+            break
 
 while True:
     print(
-        'Welcome to my Word..\n [*] Press 1 for Encryption \n [*] Press 0 for Decryption \n [*] Press 01 to exit.. ')
+        'Welcome to my Word..\n [*] Press 1 for Encryption \n [*] Press 0 for Decryption \n [*] Press 2 for brute decrypt \n [*] Press 01 to exit.. ')
     print('Tip ---> Encryption/Decryption with shift value of your choice ! ')
     choice = input('Insert Here : ')
     if choice.isdigit():
@@ -50,6 +56,15 @@ while True:
             print(f'Your plaintext ---> {Decryption(csen, key)}')
             print(50 * '-')
             print('Special symbols (!,# etc and numbers) are deleted..')
+            con = input('Shall we continue ? [Any Key/no]')
+            if con == 'no':
+                print('Exiting..')
+                break
+            else:
+                pass
+        elif choice == "2":
+            enctext = input("Text: ")
+            BruteDecrypt(enctext) 
             con = input('Shall we continue ? [Any Key/no]')
             if con == 'no':
                 print('Exiting..')
