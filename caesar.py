@@ -30,7 +30,7 @@ def BruteDecrypt(ciphertext):
     for i in range(1,10000):
         text = c_decrypt(ciphertext,i)
         if not nonsense(text):
-            print("Maybe: " + text)
+            print("Maybe: \"" + text + "\" shift: " + str(i))
             break
 
 def multi_cypher(plaintext, key_sequence):
